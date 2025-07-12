@@ -43,6 +43,17 @@ app.post("/submit", async (req, res) => {
   }
 });
 
+app.get("/test-json", (req, res) => {
+  const fs = require("fs");
+  try {
+    const key = fs.readFileSync("react-sheet-465214-2536c6c0b1be.json", "utf8");
+    res.status(200).send("✅ JSON file loaded successfully");
+  } catch (error) {
+    res.status(500).send("❌ Cannot read JSON file");
+  }
+});
+
+
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on port ${PORT}`);
 });
